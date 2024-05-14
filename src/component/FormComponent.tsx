@@ -12,9 +12,9 @@ interface IFormProps{
 
 const FormComponent:FC = () => {
     let formObj = useForm<IFormProps>({mode:"all",resolver:joiResolver(postValidator)});
-    let {register, handleSubmit, formState: {errors, isValid}} = formObj;
+    let {register, handleSubmit, formState: {errors}} = formObj;
 
-    const save = (formValues:IFormProps) => {
+    const save = () => {
        axios.post("https://jsonplaceholder.typicode.com/posts").then(response => {
            console.log("New Post created", response.data);
        })
