@@ -4,6 +4,8 @@ import {joiResolver} from "@hookform/resolvers/joi";
 import {postValidator} from "../validators/post.validator";
 import axios from "axios";
 
+
+
 interface IFormProps{
     Userid: number,
     title: string,
@@ -14,8 +16,15 @@ const FormComponent:FC = () => {
     let formObj = useForm<IFormProps>({mode:"all",resolver:joiResolver(postValidator)});
     let {register, handleSubmit, formState: {errors}} = formObj;
 
-    const save = () => {
-       axios.post("https://jsonplaceholder.typicode.com/posts").then(response => {
+    const save = (formValue:IFormProps) => {
+        console.log(formValue)
+       axios.post("https://jsonplaceholder.typicode.com/posts", {
+            UserId: formValue.Userid,
+            title: formValue.title,
+            body: formValue.body
+
+       })
+           .then(response => {
            console.log("New Post created", response.data);
        })
            .catch(error => {
