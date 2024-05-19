@@ -11,7 +11,7 @@ const CommentsComponent: FC<IProps>= (comments) => {
     return (
         <div>
             {
-                comments.comments.map(comment => <CommentComponent key={comment.postId} comment={comment}/>)
+                comments.comments.map(comment => <CommentComponent key={comment.id} comment={comment}/>)
             }
 
         </div>
