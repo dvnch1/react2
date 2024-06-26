@@ -6,6 +6,7 @@ interface  IProps {
     user: IUserModel;
 }
 
+
 const UserComponent:FC<IProps> = ({user}) => {
     return (
         <div>
